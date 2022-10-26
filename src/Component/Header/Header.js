@@ -7,11 +7,12 @@ const Header = () => {
         <div className='header'>
             <img className='logo' src={'https://i.ibb.co/FgQrSK0/logo-2.png'} alt=''/>
             <div className='title'>
-                <p className='title1'>Grean</p>
+                <p className='title1'>Green</p>
                 <p className='title2'>Education</p>
             </div>
             <div className='nav-buttons'>
-                <NavLink to='/courses'>Courses</NavLink>
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/course'>Courses</NavLink>
                 <NavLink to='/blog'>Blog</NavLink>
                 <NavLink to='/faq'>FAQ</NavLink>
             </div>

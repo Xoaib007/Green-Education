@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Blog from './Component/Blog/Blog';
+import Course from './Component/Course/Course';
 import Home from './Component/Home/Home';
 import Main from './Layout/Main';
 
@@ -18,6 +19,11 @@ function App() {
         {
           path: '/blog',
           element: <Blog></Blog>
+        },
+        {
+          path: '/course',
+          loader: () => fetch('https://10th-server-side.vercel.app/all-courses'),
+          element: <Course></Course>
         }
       ]
     }

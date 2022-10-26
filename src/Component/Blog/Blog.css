@@ -1,0 +1,23 @@
+.card1{
+    background-color: #fdedb1;
+    width: 60%;
+    border: 2px solid gray;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.cards{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.cards a{
+    text-decoration: none;
+    
+}
+@media only screen and (max-width: 576px) {
+    .card1{
+        width: 90%;
+    }
+}

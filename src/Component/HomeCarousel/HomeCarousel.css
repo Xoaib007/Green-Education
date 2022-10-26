@@ -2,7 +2,9 @@
     position: relative;
     left: 12.5%;
     top: 40px;
+    border-radius: 10px;
 }
 .slider-image{
     filter: brightness(40%);
+    border-radius: 10px;
 }

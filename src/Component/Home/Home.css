@@ -1,0 +1,10 @@
+.register{
+    width: 75%;
+    background-color: rgb(119, 119, 236);
+    display: flex;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.text{
+    text-align: start;
+}
