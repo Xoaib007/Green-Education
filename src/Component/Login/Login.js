@@ -1,10 +1,19 @@
 import { useContext } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
+import app from '../../Firebase/Firebase.config';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import './Login.css'
+import { Button } from 'react-bootstrap';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const auth= getAuth(app);
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+    const {signIn, providerLogin} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -24,7 +33,23 @@ const Login = () => {
             form.reset();
             navigate(from, {replace: true})
         })
-        .catch(error => console.error(error))
+        .catch( () => toast("Please write a correct email"))
+    }
+
+    const handleGoogleSignIn = () =>{
+        providerLogin(googleProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+    }
+
+    const handleGHSignIn = () =>{
+        signInWithPopup(auth, githubProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
     }
 
     return (
@@ -41,7 +66,10 @@ const Login = () => {
             </div>
             <input type='submit' value='Login' className='submit'></input>
             </form>
-            <p>New to Ema-john? <Link to='/signup'>Create a new account</Link></p>
+            
+            <Button onClick={handleGoogleSignIn} variant='outline-primary'>Sign In with Google</Button>
+            <Button onClick={handleGHSignIn} variant='outline-primary'>Sign In with Github</Button>
+            <p>New to EGreen education? <Link to='/signup'>Create a new account</Link></p>
         </div>
     );
 };

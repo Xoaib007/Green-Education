@@ -1,15 +1,18 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
+import app from '../../Firebase/Firebase.config';
 import './Signup.css'
 
+const auth= getAuth(app);
 const Signup = () => {
     const [error, setError] = useState(null);
     const {createUser, providerLogin} = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -49,6 +52,13 @@ const Signup = () => {
         })
     }
 
+    const handleGHSignIn = () =>{
+        signInWithPopup(auth, githubProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+        })
+    }
     return (
         <div className='form-container'>
             <h2 className='form-title'>Sign Up</h2>
@@ -80,7 +90,8 @@ const Signup = () => {
 
                 <input type='submit' value='Signup' className='submit'></input>
             </form>
-            <Button onClick={handleGoogleSignIn} variant='outlinr-primary'>Sign In with Foogle</Button>
+            <Button onClick={handleGoogleSignIn} variant='outline-primary'>Sign In with Google</Button>
+            <Button onClick={handleGHSignIn} variant='outline-primary'>Sign In with Github</Button>
             <p>Already have an account? <Link to='/login'>Log in here</Link></p>
             <p className='errorr'>{error}</p>
         </div>
