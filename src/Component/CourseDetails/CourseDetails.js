@@ -17,6 +17,7 @@ const CourseDetails = () => {
                     <p class="card-text">{course.details}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
+                
                 <Link className="crd-btn" to='/checkout'><Button variant="outline-primary">Get Premium Access</Button></Link>
             </div>
         </div>

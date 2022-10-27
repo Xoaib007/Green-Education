@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
-import './Header.css'
+import './Header.css';
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
@@ -20,7 +21,7 @@ const Header = () => {
                 {   
                     user?.uid ?
                         <div className='d-flex '>
-                        <p className='email'>{user.email}</p>
+                        <p className='email'>{user.displayName}</p>
                         <button className='logout' onClick={logOut}>Sign Out</button>
                         </div>
                     :
@@ -29,6 +30,11 @@ const Header = () => {
                         <Link to='signup'>Sign Up</Link>
                     </>
                 }
+                <div className='theme'>
+                    <MDBSwitch id='flexSwitchCheckDefault' />
+                    <p>Dark Theme</p>
+                </div>
+                
             </div>
         </div>
     );
