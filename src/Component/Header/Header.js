@@ -8,11 +8,14 @@ const Header = () => {
     const {user, logOut} = useContext(AuthContext)
     return (
         <div className='header'>
-            <img className='logo' src={'https://i.ibb.co/FgQrSK0/logo-2.png'} alt=''/>
+            <div className='with-logo'>
+                <img className='logo' src={'https://i.ibb.co/FgQrSK0/logo-2.png'} alt=''/>
             <div className='title'>
                 <p className='title1'>Green</p>
                 <p className='title2'>Education</p>
             </div>
+            </div>
+            
             <div className='nav-buttons'>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/course'>Courses</NavLink>
