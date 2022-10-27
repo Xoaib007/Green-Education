@@ -82,4 +82,8 @@
         display: flex;
         flex-direction: row;
     }
+    .with-logo{
+        display: flex;
+        flex-direction: row;
+    }
 }
