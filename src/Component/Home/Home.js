@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HomeCarousel from '../HomeCarousel/HomeCarousel';
 import './Home.css'
 
@@ -13,7 +14,7 @@ const Home = () => {
                 </div>
                 <div className='text-dark w-50 d-flex justify-content-center align-items-center'>
                     <button type="button" className="btn btn-outline-primary bg-white btn-lg">
-                        Register Now
+                        <Link to='/signup'>Register Now</Link>
                     </button>
                 </div>
             </div>

@@ -6,7 +6,6 @@ import './Course.css';
 
 const Course = () => {
     const courses = useLoaderData();
-    console.log(courses)
     return (
         <div>
             
@@ -16,7 +15,7 @@ const Course = () => {
                             {
                             courses.map( (course) =>(
                                 
-                                    <li><Link className="left-link" to={`${course.id}`}>{course.name}</Link></li>
+                                    <li  key={course.id}><Link className="left-link" to={`${course.id}`}>{course.name}</Link></li>
                                 
                                 ))
                             }
@@ -25,7 +24,7 @@ const Course = () => {
                             {
                             courses.map( (course) =>(
                                 
-                                    <Card className="card" style={{ width: '18rem' }}>
+                                    <Card className="card" style={{ width: '18rem' }} key={course.id}>
                                         <Card.Img variant="top" src={course.image} />
                                         <Card.Body>
                                             <Card.Title>{course.name}</Card.Title>
@@ -36,7 +35,10 @@ const Course = () => {
                                                 <p>rating: {course.rating}</p>
                                                 <p>{course.duration}</p>
                                             </div>
-                                            <Link className="card-btn" to={`${course.id}`}><Button  variant="outline-primary">View Details</Button></Link>
+                                            <div key={course.id}>
+                                                <Link className="card-btn" to={`/course/${course.id}`}><Button  variant="outline-primary">View Details</Button></Link>
+                                            </div>
+                                            
                                         </Card.Body>
                                     </Card>
                                 
